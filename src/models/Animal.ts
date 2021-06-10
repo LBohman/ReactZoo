@@ -1,0 +1,9 @@
+export class Animal {
+    constructor(
+        public id: number,
+        public name: string,
+        public latinName: string,
+        public yearOfBirth: number,
+        public shortDescription: string
+    ) {}
+}
