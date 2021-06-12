@@ -14,6 +14,19 @@ export const Animals = () => {
             console.log(response.data);
         })
     }, []);
-    //return (<div>Displaying component Animals.tsx on screen.</div>);
-    return (<div>Found: {animals.length}</div>);
+
+    let liTags = animals.map((animal) => {
+        return (
+            <li key={animal.id}>
+                <h4>{animal.name}</h4>
+                <p>{animal.shortDescription}</p>
+            </li>
+        )
+    })
+
+    return (
+    <ul>
+        {liTags}
+    </ul>
+    );
 }
