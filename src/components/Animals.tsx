@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Animal } from "../models/Animal";
 
 export const Animals = () => {
@@ -20,6 +21,7 @@ export const Animals = () => {
             <li key={animal.id}>
                 <h4>{animal.name}</h4>
                 <p>{animal.shortDescription}</p>
+                <Link to={"/animal/" + animal.id}>Läs mer om {animal.name}</Link>
             </li>
         )
     })
