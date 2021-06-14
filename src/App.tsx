@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import { Animals } from './components/Animals';
 import { Animal } from './components/Animal';
 import { PageNotFound } from './components/PageNotFound';
