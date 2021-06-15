@@ -29,15 +29,51 @@ export const Animal = () => {
     useEffect(() => {
         //ngOnInit i angular
 
-        axios.get('https://animals.azurewebsites.net/api/animals/' + id)
-        .then((response) => {
-            setAnimal(response.data);
-        });
+        const animalListLS = localStorage.getItem('animalList');
+        if (animalListLS) {
+            const parsedAnimalList = JSON.parse(animalListLS);
+            const animal = parsedAnimalList.filter((animal: AnimalDetails) => animal.id === Number(id))[0];
+            setAnimal(animal);
+        } else {
+            axios.get<AnimalDetails[]>('https://animals.azurewebsites.net/api/animals/' /* + id */)
+            .then((response) => {
+            const responseApi = response.data;
+            const singleAnimal = responseApi.filter((animal: AnimalDetails) => animal.id === Number(id))[0];
+            setAnimal(singleAnimal);
+            localStorage.setItem("animalList", JSON.stringify(responseApi));
+            });
+        }
+        // if(localStorage.animalList) {
+        //     let defaultValue = fetchFromLS();
+        //     console.log(defaultValue);
+            
+        // } else {
+        //     axios.get('https://animals.azurewebsites.net/api/animals/' + id)
+        //     .then((response) => {
+        //     setAnimal(response.data);
+        // });
+        // }
     }, [id]);
+
+    function fetchFromLS() {
+        let listFromLS = localStorage.getItem('animalList');
+        if(listFromLS === null) {
+            console.log("LS is empty");
+        } else {
+            let animals: AnimalDetails[] = JSON.parse(listFromLS);
+            for (let i = 0; i < animals.length; i++) {
+                
+                if (parseInt(id) === animals[i].id) {
+                    console.log(id, i);
+                    return animals[i];
+                }
+                
+            }
+        }
+    }
 
     //Presenterar data som har hämtats
     return (<div>
-        {/* <p>Animal id: {id}</p> */}
         <h3>{animal.name}</h3>
         <p>{animal.shortDescription}</p>
         <img src={animal.imageUrl} alt="" />
