@@ -12,14 +12,12 @@ export const Animals = () => {
 
         if(localStorage.animalList) {
             fetchFromLS();
-            console.log("if-statement activate");
         } else {
             axios.get<Animal[]>('https://animals.azurewebsites.net/api/animals')
             .then(response => {
             setAnimals(response.data);
             saveToLS((response.data));
-        })
-            console.log("else-statement activate");
+            });
         }
 
     }, []);
