@@ -79,7 +79,7 @@ export const Animal = () => {
         <img src={animal.imageUrl} alt="" />
         <h4>{animal.latinName}</h4>
         <p>{animal.longDescription}</p>
-        <Link to="/">Return to list</Link>
+        <Link to="/">Tillbaka till listan</Link>
     </div>
     );
 };
