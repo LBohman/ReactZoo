@@ -54,8 +54,11 @@ export const Animals = () => {
     })
 
     return (
+    <>
+    <h1>Djurlista</h1>
     <ul>
         {liTags}
     </ul>
+    </>
     );
 }

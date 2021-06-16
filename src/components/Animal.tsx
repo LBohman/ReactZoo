@@ -73,10 +73,12 @@ export const Animal = () => {
     }
 
     //Presenterar data som har hämtats
-    return (<div>
+    return (<div className="detailContainer">
         <h3>{animal.name}</h3>
         <p>{animal.shortDescription}</p>
-        <img src={animal.imageUrl} alt="" />
+        <div className="imgContainer">
+            <img src={animal.imageUrl} alt={animal.latinName} />
+        </div>
         <h4>{animal.latinName}</h4>
         <p>{animal.longDescription}</p>
         <Link to="/">Tillbaka till listan</Link>
