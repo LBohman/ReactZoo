@@ -24,12 +24,12 @@ export const Animal = () => {
         lastFed: new Date()
     };
     const [animal, setAnimal] = useState(defaultValue);
+    const animalListLS = localStorage.getItem('animalList');
 
     //useEffect: Används för att hämta data från API:et
     useEffect(() => {
         //ngOnInit i angular
 
-        const animalListLS = localStorage.getItem('animalList');
         if (animalListLS) {
             const parsedAnimalList = JSON.parse(animalListLS);
             const animal = parsedAnimalList.filter((animal: AnimalDetails) => animal.id === Number(id))[0];
@@ -72,6 +72,20 @@ export const Animal = () => {
         }
     }
 
+    function feedAnimal() {
+        if(animalListLS !== null) {
+            const list = JSON.parse(animalListLS);
+            for (let i = 0; i < list.length; i++) {
+                if(list[i].id == id) {
+                    list[i].isFed = true;
+                    localStorage.setItem('animalList', JSON.stringify(list));
+                    setAnimal(list[i]);
+                }
+            }
+        }
+        
+    }
+
     //Presenterar data som har hämtats
     return (<div className="detailContainer">
         <h3>{animal.name}</h3>
@@ -79,6 +93,7 @@ export const Animal = () => {
         <div className="imgContainer">
             <img src={animal.imageUrl} alt={animal.latinName} />
         </div>
+        <button onClick={feedAnimal}>Mata {animal.name}</button>
         <h4>{animal.latinName}</h4>
         <p>{animal.longDescription}</p>
         <Link to="/">Tillbaka till listan</Link>
