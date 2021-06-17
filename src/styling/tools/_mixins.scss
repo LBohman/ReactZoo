@@ -16,3 +16,22 @@
         }
     }
 }
+
+@mixin button {
+  button {
+      font-family: $font;
+      font-size: 1em;
+      text-decoration: none;
+      color: inherit;
+      background-color: transparent;
+      padding: 10px 20px;
+      border: 4px dotted $russian-violet;
+      transition: 0.2s;
+  
+      &:hover {
+        text-decoration: underline;
+        background-color: $japanese-wisteria;
+        border: 4px solid $russian-violet;
+      }
+  }
+}
