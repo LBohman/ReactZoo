@@ -5,6 +5,7 @@
     background-color: $french-raspberry;
     border: 4px solid $russian-violet;
     @include link;
+    @include button;
 
     p {
         margin-bottom: 1.9em;
@@ -12,6 +13,7 @@
 
     .imgContainer {
         width: inherit;
+        margin-top: inherit;
         img {
             width: 100%;
             border: 4px solid $russian-violet;
