@@ -42,11 +42,15 @@ export const Animals = () => {
     }
 
     let liTags = animals.map((animal) => {
+        let feedingTime = new Date().getTime() - new Date(animal.lastFed).getTime();
+        let differenceTime = Math.floor(feedingTime / (1000*60*50));
+        let hungry = differenceTime >= 4;
         return (
             <li key={animal.id}>
                 <h3>{animal.name}</h3>
                 <div>
                     <p>{animal.shortDescription}</p>
+                    {hungry ? <p>{animal.name} är hungrig!</p> : <p>{animal.name} är mätt och belåten.</p>}
                 </div>
                 <Link to={"/animal/" + animal.id}>Läs mer om {animal.name}</Link>
             </li>
