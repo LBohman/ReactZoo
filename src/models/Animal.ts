@@ -4,6 +4,10 @@ export class Animal {
         public name: string,
         public latinName: string,
         public yearOfBirth: number,
-        public shortDescription: string
+        public shortDescription: string,
+        public longDescription: string,
+        public imageUrl: string,
+        public isFed: boolean,
+        public lastFed: Date
     ) {}
 }
