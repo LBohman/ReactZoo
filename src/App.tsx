@@ -1,6 +1,6 @@
 import './App.scss';
 import { Animals } from './components/Animals';
-import { Animal } from './components/Animal';
+import { AnimalDetails } from './components/Animal';
 import { PageNotFound } from './components/PageNotFound';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
@@ -16,7 +16,7 @@ function App() {
         </Route>
         {/* Ett individuellt djur presenteras, mer detaljer */}
         <Route path="/animal/:id">
-          <Animal></Animal>
+          <AnimalDetails></AnimalDetails>
         </Route>
         {/* Om något går fel/sida kan inte hittas */}
         <Route path="*">
